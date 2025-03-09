@@ -4,6 +4,9 @@ import { route } from "./routes/route";
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", async (req: Request, res: Response) => {
   res.send("Hello Ebuddy!");
 });
