@@ -1,6 +1,12 @@
 import { Request, Response } from "express";
 import { db } from "../config/firebaseConfig";
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
 
 export async function updateUserData(req: Request, res: Response) {
   try {
@@ -11,7 +17,16 @@ export async function updateUserData(req: Request, res: Response) {
     };
     const docRef = doc(db, "users", req.params.id);
     await updateDoc(docRef, updates);
-    res.status(200).send("User data updated successfully");
+    const updatedUser = (await getDoc(docRef)).data();
+    const result = {
+      id: docRef.id,
+      ...updatedUser,
+    };
+    res.status(200).json({
+      status: "success",
+      message: "User data updated successfully",
+      data: result,
+    });
   } catch (error) {
     res.status(500).send(error);
   }
@@ -26,7 +41,11 @@ export async function fetchUserData(req: Request, res: Response) {
         ...doc.data(),
       };
     });
-    res.status(200).json(result);
+    res.status(200).json({
+      status: "success",
+      message: "User data fetched successfully",
+      data: result,
+    });
   } catch (error) {
     res.status(500).send(error);
   }
