@@ -1,0 +1,21 @@
+[debug] [2025-03-09T02:14:12.806Z] ----------------------------------------------------------------------
+[debug] [2025-03-09T02:14:12.808Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\radit\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-03-09T02:14:12.809Z] CLI Version:   13.33.0
+[debug] [2025-03-09T02:14:12.809Z] Platform:      win32
+[debug] [2025-03-09T02:14:12.809Z] Node Version:  v20.9.0
+[debug] [2025-03-09T02:14:12.809Z] Time:          Sun Mar 09 2025 09:14:12 GMT+0700 (Western Indonesia Time)
+[debug] [2025-03-09T02:14:12.809Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-09T02:14:12.815Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-09T02:14:12.815Z] > authorizing via signed-in user (dwisatrioraditya@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  F:\Software-Engineering\ebuddy-assessment\backend-repo
+
