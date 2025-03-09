@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import { db, auth } from "../config/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import {
   collection,
   doc,
@@ -19,7 +22,7 @@ export async function userSignUp(req: Request, res: Response) {
       password
     );
     const user = createdUser.user;
-    res.status(200).json({
+    res.status(201).json({
       status: "success",
       message: "User created successfully",
       data: {
@@ -40,6 +43,31 @@ export async function userSignUp(req: Request, res: Response) {
         message: error,
       });
     }
+  }
+}
+
+export async function userSignIn(req: Request, res: Response) {
+  try {
+    const { email, password } = req.body;
+    const loggedUser = await signInWithEmailAndPassword(auth, email, password);
+    if (!loggedUser) {
+      res.status(401).send({
+        status: "failed",
+        message: "Authentication failed",
+      });
+      return;
+    }
+    const user = loggedUser.user;
+    res.status(200).json({
+      status: "success",
+      message: "User logged in successfully",
+      data: {
+        id: user.uid,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
 }
 

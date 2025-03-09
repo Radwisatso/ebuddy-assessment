@@ -4,7 +4,6 @@ import { auth } from "../config/firebaseConfig";
 
 export function firebaseAuth(req: Request, res: Response, next: NextFunction) {
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
     if (user) {
       next();
     } else {
